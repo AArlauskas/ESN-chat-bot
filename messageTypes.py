@@ -1,0 +1,5 @@
+INSTALL = "install"
+REMOVE = "remove"
+HELP = "help"
+NOW = "current events"
+CREDITS = "credits"
