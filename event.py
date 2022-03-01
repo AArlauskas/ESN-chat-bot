@@ -8,17 +8,17 @@ class Event(object):
             self.date = event["date"]
             self.price = event["price"]
             self.seats = event["seats"]
-            self.seatsRemaining = event["seatsRemaining"]
+            self.seatsRemaining = event.get("seatsRemaining", "Not provided")
         else:
             self.id = event["_id"]
             self.name = event["name"]
             self.date = datetime.utcfromtimestamp(float(event["datetime"]) / 1000)
             self.price = event["regularPrice"]
             self.seats = event["seats"]
-            self.seatsRemaining = event["seatsRemaining"]
+            self.seatsRemaining = event.get("seatsRemaining", "Not provided")
 
     def toString(self):
-        return "Event's name: {}\nDate: {}\nPrice: {}\nSeats: {} \nRemaining seats: {}".format(self.name,
+        return "Event's name: {}\nDate: {}\nPrice: {} Eur\nSeats: {} \nRemaining seats: {}".format(self.name,
                                                                    self.date,
                                                                    self.price,
                                                                    self.seats,

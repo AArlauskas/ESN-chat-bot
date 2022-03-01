@@ -8,7 +8,7 @@ s = sched.scheduler(time.time, time.sleep)
 
 def checkEvents(): 
     print("Checking events")
-    eventsResponse = eventsService.getAllEvents()
+    eventsResponse = eventsService.getNowEvents()
     for item in eventsResponse:
         event = Event(item)
         if not repository.eventExists(event):

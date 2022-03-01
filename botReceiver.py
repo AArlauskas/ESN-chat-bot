@@ -25,7 +25,7 @@ def start(update, context):
     buttons = [
         [KeyboardButton(messageTypes.NOW)],
         [KeyboardButton(messageTypes.INSTALL),KeyboardButton(messageTypes.REMOVE)],
-        [KeyboardButton(messageTypes.CREDITS)],
+        # [KeyboardButton(messageTypes.CREDITS)],
         ]
     context.bot.send_message(chat_id=update.effective_chat.id,
                              text=message,
