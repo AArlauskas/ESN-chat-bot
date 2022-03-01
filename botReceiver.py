@@ -5,6 +5,7 @@ import repository
 import messageTypes
 import env
 import eventsService
+import tokensService
 from event import Event
 
 updater = Updater(token=env.TELEGRAM_TOKEN, use_context=True)
@@ -63,11 +64,18 @@ def now(update, context):
             event = Event(entry)
             text += event.toString() + "\n\n"
     context.bot.send_message(chat_id=token, text=text)
-
+    
+def status(update, context):
+    token = update.effective_chat.id    
+    text = "Number of tokens: {}\n Number of events: {}".format(tokensService.getTokenCount(),eventsService.getPostedEventsCount())
+    context.bot.send_message(chat_id=token, text=text)
+    
 def initTelegram():
     start_handler = CommandHandler("start", start)
+    status_handler = CommandHandler("status", status)
     message_handler = MessageHandler(Filters.text, messageHandler)
 
     dispatcher.add_handler(start_handler)
+    dispatcher.add_handler(status_handler)
     dispatcher.add_handler(message_handler)
     updater.start_polling()
