@@ -5,7 +5,7 @@ from env import HEARTBEAT_ON
 
 def main():
     botReceiver.initTelegram()
-    eventsChecker.initEventChecker()
     if HEARTBEAT_ON:
         heartbeatService.initialiseBeating()
+    eventsChecker.initEventChecker()
 main()
