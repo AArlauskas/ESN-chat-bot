@@ -4,22 +4,25 @@ class Event(object):
     def __init__(self, event):
         if "id" in event:
             self.id = event["id"]
-            self.name = event["name"]
-            self.date = event["date"]
-            self.price = event["price"]
-            self.seats = event["seats"]
+            self.name = event.get("name", "Not Provided")
+            self.date = event.get("date", "Not Provided")
+            self.price = event.get("regularPrice", "Not Provided")
+            self.seats = event.get("seats", "Not Provided")
             self.seatsRemaining = event.get("seatsRemaining", "Not provided")
+            self.location = event.get("location", "Not provided")
         else:
             self.id = event["_id"]
-            self.name = event["name"]
+            self.name = event.get("name", "Not Provided")
             self.date = datetime.utcfromtimestamp(float(event["datetime"]) / 1000)
-            self.price = event["regularPrice"]
-            self.seats = event["seats"]
+            self.price = event.get("regularPrice", "Not Provided")
+            self.seats = event.get("seats", "Not Provided")
             self.seatsRemaining = event.get("seatsRemaining", "Not provided")
+            self.location = event.get("location", "Not provided")
 
     def toString(self):
-        return "Event's name: {}\nDate: {}\nPrice: {} Eur\nSeats: {} \nRemaining seats: {}".format(self.name,
+        return "Event's name: {}\nDate: {}\nPrice: {} Eur\nLocation: {} \nSeats: {} \nRemaining seats: {}".format(self.name,
                                                                    self.date,
                                                                    self.price,
+                                                                   self.location,
                                                                    self.seats,
                                                                    self.seatsRemaining)

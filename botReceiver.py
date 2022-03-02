@@ -62,6 +62,8 @@ def now(update, context):
     else:
         for entry in response:
             event = Event(entry)
+            if event.location.upper() == "TEST":
+                continue
             text += event.toString() + "\n\n"
     context.bot.send_message(chat_id=token, text=text)
     

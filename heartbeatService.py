@@ -8,7 +8,7 @@ def main():
     return "Bot is alive!"
 
 def run():
-    app.run(port=9000)
+    app.run(port=8080)
 
 def initialiseBeating():
     server = Thread(target=run)

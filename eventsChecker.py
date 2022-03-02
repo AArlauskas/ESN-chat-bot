@@ -13,7 +13,8 @@ def checkEvents():
         event = Event(item)
         if not repository.eventExists(event):
             repository.addEvent(event)
-            botSender.sendNewEventMessage(event)
+            if item.get("location", "Not provided").upper() != "TEST":    
+                botSender.sendNewEventMessage(event)
     s.enter(10, 1, checkEvents)
 
 def initEventChecker():

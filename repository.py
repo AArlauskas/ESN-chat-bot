@@ -27,7 +27,8 @@ def addEvent(event):
         "date": event.date.strftime("%m/%d/%Y, %H:%M"),
         "price": event.price,
         "seats": event.seats,
-        "seatsRemaining": event.seatsRemaining
+        "seatsRemaining": event.seatsRemaining,
+        "location": event.location
     }
     table.insert(eventResult)
     
